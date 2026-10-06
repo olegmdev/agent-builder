@@ -1,0 +1,18 @@
+{
+  "url": "https://ai-agent-builder.incode-group.com",
+  "name": "AI Agent Scope Builder",
+  "ogImage": "/og.jpg",
+  "ogImageWidth": 1200,
+  "ogImageHeight": 630,
+  "ogImageType": "image/jpeg",
+  "organization": {
+    "name": "Incode Group",
+    "url": "https://incode-group.com",
+    "logo": "/logo.svg",
+    "sameAs": [
+      "https://www.linkedin.com/company/incode-group/",
+      "https://www.facebook.com/incode.group/",
+      "https://www.instagram.com/incode_group/"
+    ]
+  }
+}

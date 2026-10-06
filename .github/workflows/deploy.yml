@@ -37,8 +37,6 @@ jobs:
           VITE_BASE: /
           VITE_WEBHOOK_URL: ${{ secrets.MAKE_WEBHOOK_URL }}
           VITE_SUBMIT_SECRET: ${{ secrets.MAKE_SUBMIT_SECRET }}
-      # SPA fallback: GitHub Pages serves 404.html for unknown paths, so deep links load the app.
-      - run: cp dist/index.html dist/404.html
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist

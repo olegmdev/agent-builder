@@ -9,7 +9,10 @@
       "quickRequest": "Quick request"
     }
   },
-  "languages": { "uk": "Українська", "en": "English" },
+  "languages": {
+    "uk": "Українська",
+    "en": "English"
+  },
   "common": {
     "stepOf": "Step {{step}} of {{total}}",
     "illustrationAlt": "AI Agent illustration",
@@ -83,5 +86,32 @@
   "validation": {
     "nameRequired": "Please enter your name",
     "emailInvalid": "Please enter a valid email"
+  },
+  "seo": {
+    "siteName": "AI Agent Scope Builder",
+    "landing": {
+      "title": "Build an AI Agent for Your Business | Incode Group",
+      "description": "Answer a few questions and see which tasks you can hand over to AI, what skills your agent needs, and what it would take to build. Under 5 minutes."
+    },
+    "goal": {
+      "title": "Choose Your AI Agent's Goal | AI Agent Scope Builder",
+      "description": "Personal productivity, business and team work, or a custom mix: pick the goal your AI agent should serve and we'll suggest the skills that fit it."
+    },
+    "skills": {
+      "title": "Choose Your AI Agent's Skills | AI Agent Scope Builder",
+      "description": "Pick the categories and skills your agent should learn, from document summaries and knowledge bases to support, recruitment and data analytics."
+    },
+    "contact": {
+      "title": "Get Your AI Agent Cost Estimate | Incode Group",
+      "description": "Your agent configuration is ready. Leave your contact details and the Incode Group team will prepare a preliminary cost estimate and a roadmap."
+    },
+    "quick": {
+      "title": "Contact Incode Group About Your AI Agent",
+      "description": "Skip the questionnaire. Tell us your name, your email and why you need an AI agent, and the Incode Group team will get back to you."
+    },
+    "success": {
+      "title": "Thank You | Incode Group",
+      "description": "Your request is in. The Incode Group team will contact you as soon as we have calculated the cost of your AI agent."
+    }
   }
 }

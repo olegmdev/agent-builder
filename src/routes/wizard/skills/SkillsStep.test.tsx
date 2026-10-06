@@ -1,7 +1,7 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import { render, screen, within } from "@testing-library/react"
 import userEvent from "@testing-library/user-event"
-import { createMemoryRouter, RouterProvider } from "react-router"
+import { createMemoryRouter, Outlet, RouterProvider } from "react-router"
 import { beforeEach, expect, it } from "vitest"
 import { TooltipProvider } from "@/components/ui/tooltip"
 import { LocaleProvider } from "@/locale/LocaleProvider"
@@ -21,23 +21,34 @@ function SwitchToUkrainian() {
   return <button onClick={() => setLocale("uk")}>Switch to Ukrainian</button>
 }
 
+// LocaleProvider reads the locale off the URL, so it has to sit inside the router. Both
+// locales are mounted because switching language navigates to the /ua twin of the page.
 const renderSkills = () => {
   const router = createMemoryRouter(
     [
-      { path: "/skills", element: <SkillsStep /> },
-      { path: "/contact", element: <p>contact</p> },
+      {
+        element: (
+          <LocaleProvider>
+            <SwitchToUkrainian />
+            <Outlet />
+          </LocaleProvider>
+        ),
+        children: [
+          { path: "/skills", element: <SkillsStep /> },
+          { path: "/ua/skills", element: <SkillsStep /> },
+          { path: "/contact", element: <p>contact</p> },
+          { path: "/ua/contact", element: <p>contact</p> },
+        ],
+      },
     ],
     { initialEntries: ["/skills"] },
   )
   render(
-    <LocaleProvider>
-      <QueryClientProvider client={new QueryClient()}>
-        <TooltipProvider>
-          <SwitchToUkrainian />
-          <RouterProvider router={router} />
-        </TooltipProvider>
-      </QueryClientProvider>
-    </LocaleProvider>,
+    <QueryClientProvider client={new QueryClient()}>
+      <TooltipProvider>
+        <RouterProvider router={router} />
+      </TooltipProvider>
+    </QueryClientProvider>,
   )
 }
 

@@ -1,0 +1,125 @@
+<!doctype html>
+<!--
+  Source for public/og.jpg, the 1200x630 Open Graph card.
+
+  Regenerate after a brand or copy change (needs pnpm install for the Manrope file):
+    browse viewport 1200x630
+    browse goto "file://$PWD/scripts/og-card.html"
+    browse screenshot --viewport public/og.jpg
+
+  Any headless browser works; the point is a 1200x630 viewport shot. Keep the output under
+  ~1MB and the dimensions exact, since site.json declares them to the scrapers.
+-->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      @font-face {
+        font-family: "Manrope";
+        font-style: normal;
+        font-weight: 200 800;
+        font-display: block;
+        src: url("../node_modules/@fontsource-variable/manrope/files/manrope-latin-wght-normal.woff2")
+          format("woff2");
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        width: 1200px;
+        height: 630px;
+        overflow: hidden;
+      }
+      body {
+        font-family: "Manrope", system-ui, sans-serif;
+        background: #ffffff;
+        color: #1b1d1f;
+        display: grid;
+        grid-template-columns: 1fr 500px;
+        position: relative;
+      }
+
+      .bar {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 10px;
+        background: #7cb342;
+      }
+      .left {
+        position: relative;
+        padding: 64px 48px 64px 72px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .logo {
+        height: 46px;
+        width: auto;
+        align-self: flex-start;
+      }
+      h1 {
+        font-size: 66px;
+        line-height: 1.04;
+        letter-spacing: -0.022em;
+        font-weight: 700;
+      }
+      h1 .accent {
+        color: #7cb342;
+      }
+      p {
+        margin-top: 22px;
+        font-size: 27px;
+        line-height: 1.38;
+        color: #5f6368;
+        max-width: 620px;
+      }
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        align-self: flex-start;
+        background: #f3f8ee;
+        color: #1b1d1f;
+        font-size: 21px;
+        font-weight: 600;
+        padding: 12px 20px;
+        border: 1px solid #dde1e6;
+      }
+      .dot {
+        width: 9px;
+        height: 9px;
+        background: #7cb342;
+        border-radius: 50%;
+      }
+      .art {
+        position: relative;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+      }
+      .art img {
+        height: 620px;
+        width: auto;
+        object-fit: contain;
+        object-position: bottom;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="left">
+      <img class="logo" src="../public/logo.svg" alt="Incode Group" />
+      <div>
+        <h1><span class="accent">Build an AI agent</span><br />for your business.</h1>
+        <p>Answer a few questions and see which tasks you can hand over to AI.</p>
+      </div>
+      <span class="badge"><span class="dot"></span>Takes under 5 minutes</span>
+    </div>
+    <div class="art"><img src="../public/common/landing.jpg" alt="" /></div>
+    <div class="bar"></div>
+  </body>
+</html>

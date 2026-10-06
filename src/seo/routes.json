@@ -1,0 +1,8 @@
+[
+  { "key": "landing", "path": "/", "indexable": true },
+  { "key": "goal", "path": "/goal", "indexable": true },
+  { "key": "skills", "path": "/skills", "indexable": false },
+  { "key": "contact", "path": "/contact", "indexable": false },
+  { "key": "quick", "path": "/quick", "indexable": false },
+  { "key": "success", "path": "/success", "indexable": false }
+]
