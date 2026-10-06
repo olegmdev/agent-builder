@@ -40,3 +40,22 @@ export async function getResource<T extends z.ZodType>(
 export async function postJson(path: string, body: unknown): Promise<void> {
   await fetchJson(path, { method: "POST", body: JSON.stringify(body) })
 }
+
+/**
+ * Make.com hook URL that receives form submissions. Empty in local dev and tests, which
+ * keeps submissions on the demo path in submit.ts.
+ */
+export const WEBHOOK_URL = import.meta.env.VITE_WEBHOOK_URL ?? ""
+
+/**
+ * POST to the Make.com hook. Make answers 400 on any path suffix, so every form posts to
+ * this one URL and the scenario routes on the body's `type` field.
+ */
+export async function postWebhook(body: unknown): Promise<void> {
+  const res = await fetch(WEBHOOK_URL, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(body),
+  })
+  if (!res.ok) throw new Error(`Webhook failed: ${res.status} ${res.statusText}`)
+}
