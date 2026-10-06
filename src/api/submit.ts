@@ -1,4 +1,4 @@
-import { API_MODE, WEBHOOK_URL, delay, postJson, postWebhook } from "./client"
+import { API_MODE, SUBMIT_SECRET, WEBHOOK_URL, delay, postJson, postWebhook } from "./client"
 import type { EstimatePayload, QuickRequestPayload } from "./schemas"
 
 const DEMO_SUBMIT_DELAY_MS = 800
@@ -8,6 +8,7 @@ const envelope = (type: "estimate" | "quick-request") => ({
   type,
   submittedAt: new Date().toISOString(),
   source: typeof location === "undefined" ? "" : location.host,
+  ...(SUBMIT_SECRET ? { secret: SUBMIT_SECRET } : {}),
 })
 
 export async function submitEstimate(payload: EstimatePayload): Promise<void> {

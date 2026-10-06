@@ -48,6 +48,13 @@ export async function postJson(path: string, body: unknown): Promise<void> {
 export const WEBHOOK_URL = import.meta.env.VITE_WEBHOOK_URL ?? ""
 
 /**
+ * Shared secret echoed in every submission so the Make scenario can drop anything that
+ * does not carry it. It ships in the public bundle like the hook URL above, so it filters
+ * traffic that found the URL some other way; it is not access control.
+ */
+export const SUBMIT_SECRET = import.meta.env.VITE_SUBMIT_SECRET ?? ""
+
+/**
  * POST to the Make.com hook. Make answers 400 on any path suffix, so every form posts to
  * this one URL and the scenario routes on the body's `type` field.
  */
