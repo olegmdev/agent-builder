@@ -12,6 +12,12 @@ const UA_PREFIX = new RegExp(`^/${UA_SEGMENT}(?=/|$)`)
 
 export const HREFLANG: Record<Locale, string> = { en: "en", uk: "uk" }
 
+/**
+ * What the language switcher shows. "UK" is the correct ISO 639-1 code but reads as United
+ * Kingdom, so Ukrainian is labelled UA — the same reason the URL segment is /ua/.
+ */
+export const LOCALE_LABEL: Record<Locale, string> = { en: "EN", uk: "UA" }
+
 export function localeFromPath(pathname: string): Locale {
   return UA_PREFIX.test(pathname) ? "uk" : "en"
 }
