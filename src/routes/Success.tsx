@@ -1,5 +1,7 @@
+import { ArrowRightIcon } from "lucide-react"
 import { useTranslation } from "react-i18next"
 import { AppImage } from "@/components/common/AppImage"
+import { ButtonLink } from "@/components/common/ButtonLink"
 
 export default function Success() {
   const { t } = useTranslation()
@@ -13,6 +15,11 @@ export default function Success() {
       />
       <h1 className="mt-9 text-[1.75rem] text-ink sm:text-[2rem]">{t("success.title")}</h1>
       <p className="mt-2 max-w-sm text-base text-ink-muted">{t("success.subtitle")}</p>
+      {/* The wizard store is already reset by the time we land here, so /goal starts clean. */}
+      <ButtonLink className="mt-8" size="xl" to="/goal">
+        {t("success.buildAnother")}
+        <ArrowRightIcon />
+      </ButtonLink>
     </main>
   )
 }
