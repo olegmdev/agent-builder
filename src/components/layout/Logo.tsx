@@ -1,12 +1,12 @@
 import { Trans, useTranslation } from "react-i18next"
-import { Link } from "react-router"
+import { LocaleLink } from "@/locale/links"
 
 import logoSrc from "/logo.svg"
 
 export function Logo() {
   const { t } = useTranslation()
   return (
-    <Link
+    <LocaleLink
       to="/"
       className="flex shrink-0 items-center gap-5 outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
     >
@@ -19,6 +19,6 @@ export function Logo() {
           <Trans i18nKey="header.productLine2" components={{ strong: <strong /> }} />
         </span>
       </span>
-    </Link>
+    </LocaleLink>
   )
 }

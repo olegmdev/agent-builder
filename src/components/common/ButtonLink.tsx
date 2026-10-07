@@ -1,6 +1,7 @@
 import type { VariantProps } from "class-variance-authority"
 import { cn } from "cn"
 import { Link, type LinkProps } from "react-router"
+import { useLocalePath } from "@/locale/navigation"
 import { buttonVariants } from "@/components/ui/button"
 
 /**
@@ -17,6 +18,7 @@ export function ButtonLink({
   onClick,
   ...props
 }: LinkProps & VariantProps<typeof buttonVariants> & { disabled?: boolean }) {
+  const localePath = useLocalePath()
   return (
     <Link
       className={cn(
@@ -31,6 +33,7 @@ export function ButtonLink({
         else onClick?.(event)
       }}
       {...props}
+      to={typeof props.to === "string" ? localePath(props.to) : props.to}
     />
   )
 }

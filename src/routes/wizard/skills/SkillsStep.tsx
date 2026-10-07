@@ -1,10 +1,12 @@
 import { ArrowLeftIcon, ArrowRightIcon } from "lucide-react"
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react"
 import { useTranslation } from "react-i18next"
-import { Navigate, useLocation, useNavigate } from "react-router"
+import { useLocation } from "react-router"
 import { useCategories, useGoals } from "@/api/queries"
 import type { CategoryGroup as CategoryGroupData } from "@/api/schemas"
 import { ErrorState } from "@/components/common/ErrorState"
+import { LocaleNavigate } from "@/locale/links"
+import { useLocaleNavigate } from "@/locale/navigation"
 import { CategoryGroup } from "./CategoryGroup"
 import { Accordion } from "@/components/ui/accordion"
 import { ButtonLink } from "@/components/common/ButtonLink"
@@ -19,14 +21,14 @@ import { SkillsSkeleton } from "./SkillsSkeleton"
 
 export default function SkillsStep() {
   const goalId = useWizardStore((s) => s.goalId)
-  if (!goalId) return <Navigate to="/goal" replace />
+  if (!goalId) return <LocaleNavigate to="/goal" replace />
   // Remount per goal so the expanded-categories state starts fresh after "Switch to All-in-One".
   return <SkillsStepContent key={goalId} goalId={goalId} />
 }
 
 function SkillsStepContent({ goalId }: { goalId: string }) {
   const { t } = useTranslation()
-  const navigate = useNavigate()
+  const navigate = useLocaleNavigate()
   const location = useLocation()
   const focusFromState = (location.state as SkillsLocationState | null)?.focusCategoryId
 
@@ -68,7 +70,7 @@ function SkillsStepContent({ goalId }: { goalId: string }) {
     scrollToCategory(categoryId)
   }, [])
 
-  if (goals.data && !goal) return <Navigate to="/goal" replace />
+  if (goals.data && !goal) return <LocaleNavigate to="/goal" replace />
 
   const canContinue = ready && canContinueFromSkills(selections)
 

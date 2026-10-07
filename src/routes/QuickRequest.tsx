@@ -3,9 +3,9 @@ import { useMutation } from "@tanstack/react-query"
 import { LoaderCircleIcon } from "lucide-react"
 import { useForm } from "react-hook-form"
 import { useTranslation } from "react-i18next"
-import { useNavigate } from "react-router"
 import { quickRequestSchema, type QuickRequest as QuickRequestValues } from "@/api/schemas"
 import { submitQuickRequest } from "@/api/submit"
+import { useLocaleNavigate } from "@/locale/navigation"
 import { FormField } from "@/components/common/FormField"
 import { AppImage } from "@/components/common/AppImage"
 import { Button } from "@/components/ui/button"
@@ -15,7 +15,7 @@ import { useLocale } from "@/locale/useLocale"
 
 export default function QuickRequest() {
   const { t } = useTranslation()
-  const navigate = useNavigate()
+  const navigate = useLocaleNavigate()
   const { locale } = useLocale()
   const form = useForm<QuickRequestValues>({
     resolver: zodResolver(quickRequestSchema),

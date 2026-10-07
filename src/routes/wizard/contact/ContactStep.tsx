@@ -4,8 +4,8 @@ import { ArrowLeftIcon, ArrowRightIcon, LoaderCircleIcon } from "lucide-react"
 import { useEffect, useLayoutEffect } from "react"
 import { useForm } from "react-hook-form"
 import { useTranslation } from "react-i18next"
-import { useNavigate } from "react-router"
 import { useCategories, useGoals } from "@/api/queries"
+import { useLocaleNavigate } from "@/locale/navigation"
 import { contactSchema, type Contact, type EstimatePayload } from "@/api/schemas"
 import { submitEstimate } from "@/api/submit"
 import { FormField } from "@/components/common/FormField"
@@ -23,7 +23,7 @@ const FORM_ID = "contact-form"
 
 export default function ContactStep() {
   const { t } = useTranslation()
-  const navigate = useNavigate()
+  const navigate = useLocaleNavigate()
   // RequireGoal + RequireSkills guarantee a goal with selections here.
   const goalId = useWizardStore((s) => s.goalId) ?? ""
   const savedContact = useWizardStore((s) => s.contact)

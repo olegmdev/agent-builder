@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
-import { Navigate, useLocation, useNavigate } from "react-router"
+import { useLocation, useNavigate } from "react-router"
+import { LocaleNavigate } from "@/locale/links"
 
 /**
  * Browsers keep history.state across a reload, so the flag is latched on mount and then cleared:
@@ -15,5 +16,5 @@ export function RequireSubmitted({ children }: { children: React.ReactNode }) {
     if (submitted) void navigate(".", { replace: true, state: null })
   }, [submitted, navigate])
 
-  return allowed ? children : <Navigate to="/" replace />
+  return allowed ? children : <LocaleNavigate to="/" replace />
 }
