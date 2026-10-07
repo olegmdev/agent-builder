@@ -4,7 +4,7 @@ import { useLocation } from "react-router"
 import { LOCALES } from "@/api/schemas"
 import { HREFLANG, pathForLocale } from "@/locale/routing"
 import { useLocale } from "@/locale/useLocale"
-import { absoluteUrl, OG_LOCALE, pageFor, SITE } from "./pages"
+import { absoluteUrl, assetUrl, OG_LOCALE, pageFor, SITE } from "./pages"
 
 function upsertMeta(attr: "name" | "property", key: string, content: string) {
   const selector = `meta[${attr}="${CSS.escape(key)}"]`
@@ -48,7 +48,7 @@ export function Seo() {
     const title = t(`seo.${page.key}.title`)
     const description = t(`seo.${page.key}.description`)
     const canonical = absoluteUrl(pathForLocale(page.path, locale))
-    const image = absoluteUrl(SITE.ogImage)
+    const image = assetUrl(SITE.ogImage)
 
     document.title = title
     upsertMeta("name", "description", description)

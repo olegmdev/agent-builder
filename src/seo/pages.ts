@@ -36,6 +36,15 @@ export function absoluteUrl(path: string): string {
 }
 
 /**
+ * Absolute URL for a static file. Files are not directories, so they must NOT take the
+ * trailing slash `absoluteUrl` adds: /og.jpg/ is a 404, which silently kills every link
+ * preview and the Organization logo in the JSON-LD.
+ */
+export function assetUrl(path: string): string {
+  return new URL(path, site.url).href
+}
+
+/**
  * The SEO entry for a URL. Trailing slashes are stripped because GitHub Pages redirects
  * /goal to /goal/, and unknown paths fall back to the landing entry the way the router
  * redirects them to "/".

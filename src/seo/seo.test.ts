@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest"
 import { resources } from "@/i18n"
 import { pathForLocale } from "@/locale/routing"
-import { absoluteUrl, pageFor, SEO_PAGES } from "./pages"
+import { absoluteUrl, assetUrl, pageFor, SEO_PAGES, SITE } from "./pages"
 
 describe("pageFor", () => {
   it.each([
@@ -59,6 +59,16 @@ describe("canonical URLs", () => {
       for (const locale of ["en", "uk"] as const) {
         expect(absoluteUrl(pathForLocale(page.path, locale))).not.toMatch(/[^:]\/\//)
       }
+    }
+  })
+})
+
+describe("asset URLs", () => {
+  // /og.jpg/ answers 404, which costs every link preview and the JSON-LD logo.
+  it("never gives a static file the directory trailing slash", () => {
+    for (const file of [SITE.ogImage, SITE.organization.logo]) {
+      expect(assetUrl(file), file).toBe(`https://ai-agent-builder.incode-group.com${file}`)
+      expect(assetUrl(file).endsWith("/"), file).toBe(false)
     }
   })
 })

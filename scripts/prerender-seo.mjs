@@ -6,7 +6,7 @@
  * src/seo/Seo.tsx is invisible to them — the tags have to be in the served HTML. As a bonus,
  * GitHub Pages now answers these paths with 200 instead of falling through to 404.html.
  */
-import { mkdir, readFile, writeFile } from "node:fs/promises"
+import { access, mkdir, readFile, writeFile } from "node:fs/promises"
 import path from "node:path"
 
 const DIST = "dist"
@@ -30,6 +30,8 @@ const pathForLocale = (p, locale) =>
 // GitHub Pages 301s /goal to /goal/, so every advertised URL names the 200 form.
 const canonicalPath = (p) => (p === "/" ? "/" : `${p.replace(/\/+$/, "")}/`)
 const abs = (p) => new URL(canonicalPath(p), site.url).href
+// Files are not directories: /og.jpg/ is a 404, so assets skip the trailing slash.
+const absFile = (p) => new URL(p, site.url).href
 const esc = (s) =>
   String(s)
     .replace(/&/g, "&amp;")
@@ -49,7 +51,7 @@ function jsonLd(route, locale) {
     "@id": `${site.url}/#organization`,
     name: site.organization.name,
     url: site.organization.url,
-    logo: abs(site.organization.logo),
+    logo: absFile(site.organization.logo),
     sameAs: site.organization.sameAs,
   }
   const website = {
@@ -77,7 +79,7 @@ function jsonLd(route, locale) {
           browserRequirements: "Requires JavaScript",
           operatingSystem: "Web",
           inLanguage: HREFLANG[locale],
-          image: abs(site.ogImage),
+          image: absFile(site.ogImage),
           publisher: { "@id": `${site.url}/#organization` },
         },
       ],
@@ -102,7 +104,7 @@ function jsonLd(route, locale) {
 function head(route, locale) {
   const page = copy[locale][route.key]
   const canonical = abs(pathForLocale(route.path, locale))
-  const image = abs(site.ogImage)
+  const image = absFile(site.ogImage)
   const tags = [
     `<title>${esc(page.title)}</title>`,
     `<meta name="description" content="${esc(page.description)}" />`,
@@ -200,6 +202,15 @@ const sitemap = [
   `</urlset>`,
 ].join("\n")
 await writeFile(path.join(DIST, "sitemap.xml"), `${sitemap}\n`)
+
+// The og:image is only ever exercised by scrapers, so a missing file fails silently in
+// every browser and shows up as a blank preview on LinkedIn days later. Fail the build.
+await access(path.join(DIST, site.ogImage)).catch(() => {
+  throw new Error(
+    `prerender-seo: site.json names ogImage "${site.ogImage}" but ${path.join(DIST, site.ogImage)} does not exist. ` +
+      `Add the file to public/ or correct site.json.`,
+  )
+})
 
 console.log(`prerender-seo: ${written.length} pages, 404.html, sitemap.xml`)
 console.log(written.map((p) => `  ${p}`).join("\n"))
