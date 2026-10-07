@@ -45,6 +45,8 @@ export const goalSchema = z.object({
   title: z.string().min(1),
   description: z.string(),
   image: z.string(),
+  /** A small, tightly cropped version of `image` for cards and the summary panel. */
+  thumbnail: z.string(),
   defaultSelectedSkills: z.array(skillSelectionSchema),
 })
 export type Goal = z.infer<typeof goalSchema>

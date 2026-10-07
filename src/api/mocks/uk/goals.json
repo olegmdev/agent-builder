@@ -4,6 +4,7 @@
     "title": "Особисте / Продуктивність",
     "description": "Фокус на особистій ефективності, рутині та навчанні",
     "image": "goals/personal.jpg",
+    "thumbnail": "goals/personal-small.jpg",
     "defaultSelectedSkills": [
       {
         "skillId": "market_research",
@@ -25,6 +26,7 @@
     "title": "Бізнес / Команда",
     "description": "Фокус на продажах, маркетингу, підтримці та командній роботі",
     "image": "goals/business.jpg",
+    "thumbnail": "goals/business-small.jpg",
     "defaultSelectedSkills": [
       {
         "skillId": "doc_summaries",
@@ -45,6 +47,7 @@
     "title": "Все-в-одному / Індивідуально",
     "description": "Поєднуйте навички з усіх категорій для рішення під ваші потреби",
     "image": "goals/custom.jpg",
+    "thumbnail": "goals/custom-small.jpg",
     "defaultSelectedSkills": [
       {
         "skillId": "market_research",

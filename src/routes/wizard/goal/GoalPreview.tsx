@@ -12,7 +12,7 @@ export function GoalPreview({ goal }: { goal: Goal | undefined }) {
         <>
           {/* Takes whatever height the text leaves, so the panel still fits the screen (see `fitScreen`). */}
           <AppImage src={goal.image} className="max-h-104 min-h-0 w-full flex-1" />
-          <h2 className="mt-9 text-[2rem] leading-tight text-ink">{goal.title}</h2>
+          <h2 className="mt-5 text-[2rem] leading-tight text-ink">{goal.title}</h2>
           <p className="mt-4 max-w-72 text-base text-ink-muted">{goal.description}</p>
         </>
       ) : (

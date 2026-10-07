@@ -173,6 +173,7 @@ interface Goal {
   title: string
   description: string
   image: string // URL/path
+  thumbnail: string // URL/path, small cropped image for goal cards and the summary panel
   defaultSelectedSkills: { skillId: string; connectorIds: string[] }[]
 }
 

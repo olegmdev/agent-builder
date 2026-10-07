@@ -28,7 +28,11 @@ export function SummaryPanel({ goal, catalog, onChangeCategory, disabled }: Summ
     >
       {goal ? (
         <div className="flex items-start gap-4">
-          <AppImage src={goal.image} className="size-14 shrink-0 sm:size-20" />
+          <AppImage
+            src={goal.thumbnail}
+            className="size-14 shrink-0 sm:size-20"
+            imgClassName="size-auto max-h-full max-w-full"
+          />
           <div className="flex min-w-0 flex-col gap-2">
             <h2 className="text-xl leading-tight text-ink sm:text-[1.75rem]">{goal.title}</h2>
             <p className="text-base text-ink-muted">{goal.description}</p>
@@ -38,7 +42,7 @@ export function SummaryPanel({ goal, catalog, onChangeCategory, disabled }: Summ
         <Skeleton className="h-20 w-full" />
       )}
 
-      <h3 className="mt-8 text-xl text-ink sm:mt-10">{t("summary.willDo")}</h3>
+      <h3 className="mt-4 text-xl text-ink sm:mt-7">{t("summary.willDo")}</h3>
       <ul className="mt-5 flex flex-col">
         {selected.map((item) => (
           <SummaryCategory

@@ -2,7 +2,7 @@ import { expect, test } from "@playwright/test"
 
 test("landing → goal → skills (defaults) → contact → success", async ({ page }) => {
   await page.goto("./")
-  await page.getByRole("main").getByRole("link", { name: "Get estimate" }).click()
+  await page.getByRole("main").getByRole("link", { name: "Let's build" }).click()
 
   await expect(page).toHaveURL(/\/goal$/)
   await expect(page.getByRole("radio", { name: /All-in-One/ })).toBeChecked()

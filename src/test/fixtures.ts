@@ -42,5 +42,6 @@ export const goal = (id: string, defaults: Goal["defaultSelectedSkills"]): Goal 
   title: id,
   description: "",
   image: "",
+  thumbnail: "",
   defaultSelectedSkills: defaults,
 })
