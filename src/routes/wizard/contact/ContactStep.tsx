@@ -12,6 +12,7 @@ import { FormField } from "@/components/common/FormField"
 import { ButtonLink } from "@/components/common/ButtonLink"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import { useConfetti } from "@/lib/useConfetti"
 import { SummaryPanel } from "@/routes/wizard/components/SummaryPanel"
 import { WizardFooter } from "@/routes/wizard/components/WizardFooter"
 import { WizardLayout } from "@/routes/wizard/components/WizardLayout"
@@ -38,6 +39,9 @@ export default function ContactStep() {
   useLayoutEffect(() => {
     if (catalog) pruneSelections(catalog)
   }, [catalog, pruneSelections])
+
+  // Bursts on arrival at the last step; `celebrate` runs again once the request is sent.
+  const { celebrate } = useConfetti({ onMount: true })
 
   const form = useForm<Contact>({
     resolver: zodResolver(contactSchema),
@@ -76,6 +80,7 @@ export default function ContactStep() {
       onSuccess: async () => {
         // Commit the navigation first (flushSync bypasses the router's transition): resetting
         // while /contact is still rendered would trip its guard and redirect to /skills.
+        celebrate()
         await navigate("/success", { state: { submitted: true }, replace: true, flushSync: true })
         resetWizard()
       },
