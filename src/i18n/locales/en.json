@@ -42,7 +42,7 @@
     "next": "Choose skills"
   },
   "skills": {
-    "title": "What should your agent learn?",
+    "title": "What should your agent do?",
     "subtitle": "Choose one or more categories and skills",
     "selectAll": "Select all skills",
     "unselectAll": "Unselect all skills",
@@ -106,11 +106,11 @@
     },
     "skills": {
       "title": "Choose Your AI Agent's Skills | AI Agent Scope Builder",
-      "description": "Pick the categories and skills your agent should learn, from document summaries and knowledge bases to support, recruitment and data analytics."
+      "description": "Pick the categories and skills your agent should handle, from document summaries and knowledge bases to support, recruitment and data analytics."
     },
     "contact": {
       "title": "Get Your AI Agent Cost Estimate | Incode Group",
-      "description": "Your agent configuration is ready. Leave your contact details and the Incode Group team will prepare a preliminary cost estimate and a roadmap."
+      "description": "Your agent is almost ready. Leave your contact details and the Incode Group team will prepare a preliminary cost estimate and a roadmap."
     },
     "quick": {
       "title": "Contact Incode Group About Your AI Agent",
