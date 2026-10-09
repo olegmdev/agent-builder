@@ -13,52 +13,51 @@ export interface HeroBadge {
 }
 
 /*
- * Positions are the mockup's badge boxes as % of the desktop stage (the `LoopVideo` in
- * Landing.tsx, up to 548 px).
- * Durations are from Figma (one full there-and-back cycle, ease-in-out), played SLOWDOWN times
- * slower. The paths (x, y) and delays are still drafts: Figma's export has no offsets or delays yet.
+ * Positions are the badge boxes in Figma's 548 × 560 hero frame as % of the video square (the
+ * `LoopVideo` in Landing.tsx, up to 548 px). The robot sits at the frame's top edge there, so
+ * frame and square share their top.
+ * Paths (x, y px) and durations are Figma's variant switch: smart animate, ease-in-out, 1 ms delay
+ * (so none here). Figma's duration is one leg, so a there-and-back cycle takes twice as long.
  */
-const SLOWDOWN = 1.5
-
 const FIGMA_BADGES: HeroBadge[] = [
   {
     id: "tailored",
     tone: "purple",
     size: "sm",
-    className: "top-0 left-1/2 -translate-x-1/2",
-    float: { y: -8, duration: 2.5 },
+    className: "top-[0.4%] left-[47.9%] -translate-x-1/2",
+    float: { x: 3, duration: 2.5 },
   },
   {
     id: "skills",
     tone: "brand",
     size: "xl",
-    className: "top-[8.7%] right-[4.2%]",
-    float: { x: -6, y: -10, duration: 2.3, delay: 0.3 },
+    className: "top-[7.8%] right-[6.9%]",
+    float: { x: 1, y: -9, duration: 2.3 },
   },
   {
     id: "business",
     tone: "dark",
     size: "lg",
-    className: "top-[12.2%] left-[9.1%]",
-    float: { y: 10, duration: 1.5, delay: 0.6 },
+    className: "top-[13.3%] left-[7.1%]",
+    float: { y: -5, duration: 1.5 },
   },
   {
     id: "personal",
     tone: "blue",
     size: "sm",
-    className: "top-[48.8%] left-[9.1%]",
-    float: { x: 8, y: -6, duration: 1.9, delay: 0.2 },
+    className: "top-[46.9%] left-[7.1%]",
+    float: { x: 3, duration: 1.9 },
   },
   {
     id: "allInOne",
     tone: "orange",
     size: "md",
-    className: "top-[52.9%] right-[7.2%]",
-    float: { y: -10, duration: 1.7, delay: 0.9 },
+    className: "top-[50.9%] right-[7.7%]",
+    float: { x: -2, y: 5, duration: 1.7 },
   },
 ]
 
 export const HERO_BADGES: HeroBadge[] = FIGMA_BADGES.map((badge) => ({
   ...badge,
-  float: { ...badge.float, duration: badge.float.duration * SLOWDOWN },
+  float: { ...badge.float, duration: badge.float.duration * 2 },
 }))

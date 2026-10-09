@@ -13,12 +13,12 @@ const floatingBadgeVariants = cva(
         blue: "bg-badge-blue",
         orange: "bg-badge-orange",
       },
-      // Heights from the landing mockup: 36, 40, 48 and 56 px.
+      // Heights from the 548 × 560 Figma hero frame: 32, 34, 40 and 50 px.
       size: {
-        sm: "px-3.5 py-2 text-sm leading-5",
-        md: "px-4 py-2 text-base leading-6",
-        lg: "px-4.5 py-2.5 text-xl leading-7",
-        xl: "px-5.5 py-3 text-[1.375rem] leading-8",
+        sm: "px-3 py-2 text-xs leading-4",
+        md: "px-3.5 py-1.75 text-sm leading-5",
+        lg: "px-4 py-2 text-base leading-6",
+        xl: "px-5 py-2.75 text-xl leading-7",
       },
     },
     defaultVariants: { size: "sm" },
