@@ -56,7 +56,7 @@ it("lands with defaults selected and disables the primary button at 0 skills", a
   const user = userEvent.setup()
   renderSkills()
 
-  const next = screen.getByRole("button", { name: /share your contacts/i })
+  const next = screen.getByRole("button", { name: /finish/i })
   expect(next).toBeDisabled() // skeleton while loading, never an enabled-then-disabled flash
 
   const checked = await screen.findAllByRole("checkbox", { checked: true })
