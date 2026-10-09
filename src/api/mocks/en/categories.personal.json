@@ -25,6 +25,10 @@
                 "id": "google_drive",
                 "name": "Google Drive"
               }
+            ],
+            "defaultConnectorIds": [
+              "firecrawl",
+              "notion"
             ]
           },
           {
@@ -39,6 +43,9 @@
                 "id": "google_drive",
                 "name": "Google Drive"
               }
+            ],
+            "defaultConnectorIds": [
+              "notion"
             ]
           }
         ]
@@ -52,12 +59,42 @@
           {
             "id": "meeting_prep",
             "title": "Prepare you for upcoming meetings by gathering the key topics and questions to focus on.",
-            "availableConnectors": []
+            "availableConnectors": [
+              {
+                "id": "google_calendar",
+                "name": "Google Calendar"
+              },
+              {
+                "id": "notion",
+                "name": "Notion"
+              },
+              {
+                "id": "google_drive",
+                "name": "Google Drive"
+              }
+            ],
+            "defaultConnectorIds": [
+              "google_calendar",
+              "notion"
+            ]
           },
           {
             "id": "email_triage",
             "title": "Draft polite email replies, sort incoming messages, and flag urgent requests.",
-            "availableConnectors": []
+            "availableConnectors": [
+              {
+                "id": "gmail",
+                "name": "Gmail"
+              },
+              {
+                "id": "notion",
+                "name": "Notion"
+              }
+            ],
+            "defaultConnectorIds": [
+              "gmail",
+              "notion"
+            ]
           }
         ]
       }
@@ -76,12 +113,41 @@
           {
             "id": "explain_topics",
             "title": "Explain complex topics, research papers, or articles in simple terms.",
-            "availableConnectors": []
+            "availableConnectors": [
+              {
+                "id": "firecrawl",
+                "name": "Firecrawl"
+              },
+              {
+                "id": "notion",
+                "name": "Notion"
+              },
+              {
+                "id": "google_drive",
+                "name": "Google Drive"
+              }
+            ],
+            "defaultConnectorIds": [
+              "firecrawl",
+              "notion"
+            ]
           },
           {
             "id": "study_plans",
             "title": "Create personalized study plans and generate flashcards for language learning.",
-            "availableConnectors": []
+            "availableConnectors": [
+              {
+                "id": "notion",
+                "name": "Notion"
+              },
+              {
+                "id": "google_drive",
+                "name": "Google Drive"
+              }
+            ],
+            "defaultConnectorIds": [
+              "notion"
+            ]
           }
         ]
       },
@@ -94,12 +160,41 @@
           {
             "id": "expense_tracking",
             "title": "Track personal expenses and categorize monthly receipts in a spreadsheet.",
-            "availableConnectors": []
+            "availableConnectors": [
+              {
+                "id": "google_sheets",
+                "name": "Google Drive (Sheets)"
+              },
+              {
+                "id": "gmail",
+                "name": "Gmail"
+              }
+            ],
+            "defaultConnectorIds": [
+              "google_sheets"
+            ]
           },
           {
             "id": "travel_planning",
             "title": "Plan travel itineraries, including flights, hotels, and local activities.",
-            "availableConnectors": []
+            "availableConnectors": [
+              {
+                "id": "gmail",
+                "name": "Gmail"
+              },
+              {
+                "id": "google_calendar",
+                "name": "Google Calendar"
+              },
+              {
+                "id": "firecrawl",
+                "name": "Firecrawl"
+              }
+            ],
+            "defaultConnectorIds": [
+              "gmail",
+              "google_calendar"
+            ]
           }
         ]
       }

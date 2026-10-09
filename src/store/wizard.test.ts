@@ -4,6 +4,8 @@ import { canContinueFromSkills, selectedByCategory } from "./selectors"
 import { PERSIST_KEY, useWizardStore } from "./wizard"
 
 const store = () => useWizardStore.getState()
+const skill = (id: string) =>
+  catalog.flatMap((g) => g.categories.flatMap((c) => c.skills)).find((s) => s.id === id)!
 const actions = () => store().actions
 
 const allInOne = goal("all_in_one", [
@@ -79,30 +81,55 @@ describe("default seeding", () => {
 })
 
 describe("selection actions", () => {
-  it("removes a skill's connectors when it is unchecked", () => {
+  it("switches on the skill's default connectors when it is checked", () => {
+    actions().toggleSkill(skill("research"), "search")
+    expect(store().selections.research).toEqual({
+      categoryId: "search",
+      connectorIds: ["firecrawl"],
+    })
+  })
+
+  it("ignores default connectors the skill does not offer", () => {
+    actions().toggleSkill(
+      { ...skill("summaries"), defaultConnectorIds: ["notion", "slack"] },
+      "search",
+    )
+    expect(store().selections.summaries.connectorIds).toEqual(["notion"])
+  })
+
+  it("resets a skill's connectors to its defaults when it is unchecked and checked again", () => {
     visitSkills()
-    actions().toggleSkill("research", "search")
-    actions().toggleSkill("research", "search")
-    expect(store().selections.research.connectorIds).toEqual([])
+    actions().toggleConnector("research", "notion")
+    actions().toggleSkill(skill("research"), "search")
+    actions().toggleSkill(skill("research"), "search")
+    expect(store().selections.research.connectorIds).toEqual(["firecrawl"])
   })
 
   it("clears only the given category", () => {
     visitSkills()
-    actions().toggleSkill("prep", "meetings")
+    actions().toggleSkill(skill("prep"), "meetings")
     actions().clearCategory("search")
     expect(Object.keys(store().selections)).toEqual(["prep"])
   })
 
   it("selects all skills in a category without touching existing connectors", () => {
     visitSkills()
-    actions().selectAllInCategory(catalog[0].categories[1])
-    expect(store().selections.prep).toEqual({ categoryId: "meetings", connectorIds: [] })
-    expect(store().selections.research.connectorIds).toEqual(["firecrawl"])
+    actions().toggleConnector("research", "notion")
+    actions().selectAllInCategory(catalog[0].categories[0])
+    expect(store().selections.research.connectorIds).toEqual(["firecrawl", "notion"])
+  })
+
+  it("switches on default connectors for the skills that select-all adds", () => {
+    actions().selectAllInCategory(catalog[0].categories[0])
+    expect(store().selections).toEqual({
+      research: { categoryId: "search", connectorIds: ["firecrawl"] },
+      summaries: { categoryId: "search", connectorIds: ["notion"] },
+    })
   })
 
   it("groups the summary by category in catalog order", () => {
-    actions().toggleSkill("prep", "meetings")
-    actions().toggleSkill("summaries", "search")
+    actions().toggleSkill(skill("prep"), "meetings")
+    actions().toggleSkill(skill("summaries"), "search")
     const summary = selectedByCategory(catalog, store().selections)
     expect(summary.map((s) => [s.category.id, s.skills.map((k) => k.id)])).toEqual([
       ["search", ["summaries"]],
@@ -114,7 +141,7 @@ describe("selection actions", () => {
 describe("pruneSelections", () => {
   it("drops skills and connectors the catalog no longer has", () => {
     visitSkills()
-    actions().toggleSkill("removed_skill", "search")
+    actions().toggleSkill({ ...skill("prep"), id: "removed_skill" }, "search")
     actions().toggleConnector("research", "removed_connector")
     actions().pruneSelections(catalog)
     expect(store().selections).toEqual({

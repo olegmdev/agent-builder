@@ -25,6 +25,10 @@
                 "id": "google_drive",
                 "name": "Google Drive"
               }
+            ],
+            "defaultConnectorIds": [
+              "firecrawl",
+              "notion"
             ]
           },
           {
@@ -39,6 +43,9 @@
                 "id": "google_drive",
                 "name": "Google Drive"
               }
+            ],
+            "defaultConnectorIds": [
+              "notion"
             ]
           }
         ]
@@ -52,12 +59,42 @@
           {
             "id": "meeting_prep",
             "title": "Готувати вас до зустрічей, збираючи ключові теми та питання, на яких варто зосередитися.",
-            "availableConnectors": []
+            "availableConnectors": [
+              {
+                "id": "google_calendar",
+                "name": "Google Calendar"
+              },
+              {
+                "id": "notion",
+                "name": "Notion"
+              },
+              {
+                "id": "google_drive",
+                "name": "Google Drive"
+              }
+            ],
+            "defaultConnectorIds": [
+              "google_calendar",
+              "notion"
+            ]
           },
           {
             "id": "email_triage",
             "title": "Готувати ввічливі відповіді на листи, сортувати вхідні та позначати термінові запити.",
-            "availableConnectors": []
+            "availableConnectors": [
+              {
+                "id": "gmail",
+                "name": "Gmail"
+              },
+              {
+                "id": "notion",
+                "name": "Notion"
+              }
+            ],
+            "defaultConnectorIds": [
+              "gmail",
+              "notion"
+            ]
           }
         ]
       }
@@ -76,12 +113,41 @@
           {
             "id": "explain_topics",
             "title": "Пояснювати складні теми, наукові роботи чи статті простими словами.",
-            "availableConnectors": []
+            "availableConnectors": [
+              {
+                "id": "firecrawl",
+                "name": "Firecrawl"
+              },
+              {
+                "id": "notion",
+                "name": "Notion"
+              },
+              {
+                "id": "google_drive",
+                "name": "Google Drive"
+              }
+            ],
+            "defaultConnectorIds": [
+              "firecrawl",
+              "notion"
+            ]
           },
           {
             "id": "study_plans",
             "title": "Складати персональні навчальні плани та генерувати картки для вивчення мов.",
-            "availableConnectors": []
+            "availableConnectors": [
+              {
+                "id": "notion",
+                "name": "Notion"
+              },
+              {
+                "id": "google_drive",
+                "name": "Google Drive"
+              }
+            ],
+            "defaultConnectorIds": [
+              "notion"
+            ]
           }
         ]
       },
@@ -94,12 +160,41 @@
           {
             "id": "expense_tracking",
             "title": "Вести облік особистих витрат і категоризувати щомісячні чеки в таблиці.",
-            "availableConnectors": []
+            "availableConnectors": [
+              {
+                "id": "google_sheets",
+                "name": "Google Drive (Таблиці)"
+              },
+              {
+                "id": "gmail",
+                "name": "Gmail"
+              }
+            ],
+            "defaultConnectorIds": [
+              "google_sheets"
+            ]
           },
           {
             "id": "travel_planning",
             "title": "Планувати маршрути подорожей, включно з перельотами, готелями та місцевими активностями.",
-            "availableConnectors": []
+            "availableConnectors": [
+              {
+                "id": "gmail",
+                "name": "Gmail"
+              },
+              {
+                "id": "google_calendar",
+                "name": "Google Calendar"
+              },
+              {
+                "id": "firecrawl",
+                "name": "Firecrawl"
+              }
+            ],
+            "defaultConnectorIds": [
+              "gmail",
+              "google_calendar"
+            ]
           }
         ]
       }

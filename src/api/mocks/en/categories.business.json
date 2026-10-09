@@ -21,6 +21,9 @@
                 "id": "google_drive",
                 "name": "Google Drive"
               }
+            ],
+            "defaultConnectorIds": [
+              "notion"
             ]
           },
           {
@@ -35,12 +38,35 @@
                 "id": "google_drive",
                 "name": "Google Drive"
               }
+            ],
+            "defaultConnectorIds": [
+              "notion"
             ]
           },
           {
             "id": "contract_risks",
             "title": "Find hidden risks in complex contracts and draft ready-to-send reply letters.",
-            "availableConnectors": []
+            "availableConnectors": [
+              {
+                "id": "pdf",
+                "name": "PDF"
+              },
+              {
+                "id": "google_drive",
+                "name": "Google Drive"
+              },
+              {
+                "id": "gmail",
+                "name": "Gmail"
+              },
+              {
+                "id": "outlook",
+                "name": "Outlook"
+              }
+            ],
+            "defaultConnectorIds": [
+              "pdf"
+            ]
           }
         ]
       },
@@ -53,7 +79,19 @@
           {
             "id": "transcript_analysis",
             "title": "Analyze meeting transcripts to instantly find specific agreements you discussed with colleagues.",
-            "availableConnectors": []
+            "availableConnectors": [
+              {
+                "id": "notion",
+                "name": "Notion"
+              },
+              {
+                "id": "google_drive",
+                "name": "Google Drive"
+              }
+            ],
+            "defaultConnectorIds": [
+              "notion"
+            ]
           }
         ]
       }
@@ -72,12 +110,42 @@
           {
             "id": "support_responses",
             "title": "Analyze customer feedback and draft personalized responses to common support tickets.",
-            "availableConnectors": []
+            "availableConnectors": [
+              {
+                "id": "firecrawl",
+                "name": "Firecrawl"
+              },
+              {
+                "id": "notion",
+                "name": "Notion"
+              },
+              {
+                "id": "google_drive",
+                "name": "Google Drive"
+              }
+            ],
+            "defaultConnectorIds": [
+              "firecrawl",
+              "notion"
+            ]
           },
           {
             "id": "crm_updates",
             "title": "Extract contact details from emails or documents and automatically update your CRM records.",
-            "availableConnectors": []
+            "availableConnectors": [
+              {
+                "id": "gmail",
+                "name": "Gmail"
+              },
+              {
+                "id": "notion",
+                "name": "Notion"
+              }
+            ],
+            "defaultConnectorIds": [
+              "gmail",
+              "notion"
+            ]
           }
         ]
       },
@@ -90,17 +158,59 @@
           {
             "id": "seo_content",
             "title": "Write SEO-optimized blog posts, social media captions, or newsletter content based on your prompts.",
-            "availableConnectors": []
+            "availableConnectors": [
+              {
+                "id": "firecrawl",
+                "name": "Firecrawl"
+              },
+              {
+                "id": "notion",
+                "name": "Notion"
+              },
+              {
+                "id": "google_drive",
+                "name": "Google Drive"
+              }
+            ],
+            "defaultConnectorIds": [
+              "firecrawl",
+              "notion"
+            ]
           },
           {
             "id": "creative_copy",
             "title": "Generate creative ideas, slogans, or ad copy tailored to your specific brand voice.",
-            "availableConnectors": []
+            "availableConnectors": [
+              {
+                "id": "notion",
+                "name": "Notion"
+              },
+              {
+                "id": "google_drive",
+                "name": "Google Drive"
+              }
+            ],
+            "defaultConnectorIds": [
+              "notion"
+            ]
           },
           {
             "id": "tender_monitoring",
             "title": "Monitor new commercial or government tenders that match your specific requirements.",
-            "availableConnectors": []
+            "availableConnectors": [
+              {
+                "id": "firecrawl",
+                "name": "Firecrawl"
+              },
+              {
+                "id": "notion",
+                "name": "Notion"
+              }
+            ],
+            "defaultConnectorIds": [
+              "firecrawl",
+              "notion"
+            ]
           }
         ]
       }
@@ -119,12 +229,41 @@
           {
             "id": "data_consolidation",
             "title": "Compile multi-year data from different sources into one standardized, color-coded spreadsheet.",
-            "availableConnectors": []
+            "availableConnectors": [
+              {
+                "id": "notion",
+                "name": "Notion"
+              },
+              {
+                "id": "google_sheets",
+                "name": "Google Drive (Sheets)"
+              }
+            ],
+            "defaultConnectorIds": [
+              "notion"
+            ]
           },
           {
             "id": "usage_trends",
             "title": "Analyze product usage metrics and highlight drop-off points or user trends.",
-            "availableConnectors": []
+            "availableConnectors": [
+              {
+                "id": "firecrawl",
+                "name": "Firecrawl"
+              },
+              {
+                "id": "notion",
+                "name": "Notion"
+              },
+              {
+                "id": "google_drive",
+                "name": "Google Drive"
+              }
+            ],
+            "defaultConnectorIds": [
+              "firecrawl",
+              "notion"
+            ]
           }
         ]
       }
@@ -143,12 +282,41 @@
           {
             "id": "resume_screening",
             "title": "Screen incoming resumes, extract key skills, and shortlist candidates that match your job description.",
-            "availableConnectors": []
+            "availableConnectors": [
+              {
+                "id": "gmail",
+                "name": "Gmail"
+              },
+              {
+                "id": "notion",
+                "name": "Notion"
+              },
+              {
+                "id": "google_drive",
+                "name": "Google Drive"
+              }
+            ],
+            "defaultConnectorIds": [
+              "gmail",
+              "notion"
+            ]
           },
           {
             "id": "onboarding_materials",
             "title": "Create onboarding plans and training materials for new employees based on internal wikis.",
-            "availableConnectors": []
+            "availableConnectors": [
+              {
+                "id": "notion",
+                "name": "Notion"
+              },
+              {
+                "id": "google_drive",
+                "name": "Google Drive"
+              }
+            ],
+            "defaultConnectorIds": [
+              "notion"
+            ]
           }
         ]
       }

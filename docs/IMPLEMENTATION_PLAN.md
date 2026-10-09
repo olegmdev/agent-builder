@@ -195,6 +195,7 @@ interface Skill {
   id: string
   title: string
   availableConnectors: Connector[]
+  defaultConnectorIds: string[] // switched on when the skill is checked
 }
 
 interface Connector {
@@ -231,7 +232,7 @@ interface EstimatePayload {
 - Mock adapter adds a small artificial delay (~300 ms).
 - Per-goal category lists, all EN skill texts, and Personal/Business defaults are encoded in the mocks, taken from the PNGs in `docs/design/`. The All-in-One list covers all 10 categories in 4 groups.
 - All-in-One `defaultSelectedSkills`: the first three skills of "Search, documents and knowledge", with Firecrawl on skill 1 and Notion on skills 2 and 3. That category is the one initially expanded.
-- Only "Search, documents and knowledge" has connectors; other skills show no "Connect to" block.
+- Every skill has connectors (`availableConnectors`) and defaults (`defaultConnectorIds`), taken from the Figma frame with all skills checked. Not in that frame (proposed): Education & Learning and Life & Personal Finance skills.
 
 ---
 
@@ -256,9 +257,9 @@ interface WizardState {
 
 - `setGoal(goalId)`
 - `seedDefaults(goal, catalog)` — see 6.1
-- `toggleSkill(skillId, categoryId)` — unchecking removes its connectors too
+- `toggleSkill(skill, categoryId)`: checking switches on the skill's `defaultConnectorIds`; unchecking removes its connectors
 - `toggleConnector(skillId, connectorId)`
-- `selectAllInCategory(category)`
+- `selectAllInCategory(category)`: newly added skills get their default connectors; already selected ones are untouched
 - `clearCategory(categoryId)`
 - `setContact(partial)`
 - `resetWizard()` — clears all wizard state

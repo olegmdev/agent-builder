@@ -2,6 +2,7 @@ import { cn } from "cn"
 import { PlusIcon, XIcon } from "lucide-react"
 import { useTranslation } from "react-i18next"
 import type { Connector } from "@/api/schemas"
+import { connectorIcon } from "./connectorIcons"
 
 interface ConnectorChipsProps {
   connectors: Connector[]
@@ -15,6 +16,7 @@ export function ConnectorChips({ connectors, selectedIds, onToggle }: ConnectorC
     <div className="flex flex-wrap gap-2">
       {connectors.map((connector) => {
         const selected = selectedIds.includes(connector.id)
+        const Icon = connectorIcon(connector.id)
         return (
           <button
             key={connector.id}
@@ -31,8 +33,9 @@ export function ConnectorChips({ connectors, selectedIds, onToggle }: ConnectorC
                 : "border-brand bg-background text-brand hover:bg-brand-tint",
             )}
           >
-            {selected ? <XIcon className="size-4" /> : <PlusIcon className="size-4" />}
+            <Icon aria-hidden className="size-4 shrink-0" />
             {connector.name}
+            {selected ? <XIcon className="size-4" /> : <PlusIcon className="size-4" />}
           </button>
         )
       })}

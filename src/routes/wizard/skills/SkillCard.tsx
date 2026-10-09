@@ -25,7 +25,7 @@ export function SkillCard({ skill, categoryId }: { skill: Skill; categoryId: str
       <label className="flex cursor-pointer items-start gap-3 text-base text-ink">
         <Checkbox
           checked={checked}
-          onCheckedChange={() => toggleSkill(skill.id, categoryId)}
+          onCheckedChange={() => toggleSkill(skill, categoryId)}
           className="mt-0.5 size-4.5 border-2 border-border-grey bg-background data-checked:border-brand data-checked:bg-background data-checked:text-brand"
         />
         <span>{skill.title}</span>

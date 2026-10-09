@@ -1,6 +1,6 @@
 import { create } from "zustand"
 import { createJSONStorage, persist } from "zustand/middleware"
-import type { Category, CategoryGroup, Contact, Goal } from "@/api/schemas"
+import type { Category, CategoryGroup, Contact, Goal, Skill } from "@/api/schemas"
 
 export const DEFAULT_GOAL_ID = "all_in_one"
 export const PERSIST_KEY = "scope-builder-wizard"
@@ -24,7 +24,7 @@ export interface WizardActions {
   setGoal: (goalId: string) => void
   seedDefaults: (goal: Goal, catalog: CategoryGroup[]) => void
   pruneSelections: (catalog: CategoryGroup[]) => void
-  toggleSkill: (skillId: string, categoryId: string) => void
+  toggleSkill: (skill: Skill, categoryId: string) => void
   toggleConnector: (skillId: string, connectorId: string) => void
   selectAllInCategory: (category: Category) => void
   clearCategory: (categoryId: string) => void
@@ -54,6 +54,12 @@ function indexCatalog(catalog: CategoryGroup[]): CatalogIndex {
         })
   return index
 }
+
+/** The skill's default connectors, limited to the ones it actually offers. */
+const defaultConnectorIds = (skill: Skill) =>
+  [...new Set(skill.defaultConnectorIds)].filter((id) =>
+    skill.availableConnectors.some((c) => c.id === id),
+  )
 
 export const useWizardStore = create<WizardState>()(
   persist(
@@ -102,11 +108,11 @@ export const useWizardStore = create<WizardState>()(
           if (changed) set({ selections: next })
         },
 
-        toggleSkill: (skillId, categoryId) =>
+        toggleSkill: (skill, categoryId) =>
           set(({ selections }) => {
             const next = { ...selections }
-            if (next[skillId]) delete next[skillId]
-            else next[skillId] = { categoryId, connectorIds: [] }
+            if (next[skill.id]) delete next[skill.id]
+            else next[skill.id] = { categoryId, connectorIds: defaultConnectorIds(skill) }
             return { selections: next }
           }),
 
@@ -124,7 +130,10 @@ export const useWizardStore = create<WizardState>()(
           set(({ selections }) => {
             const next = { ...selections }
             for (const skill of category.skills)
-              next[skill.id] ??= { categoryId: category.id, connectorIds: [] }
+              next[skill.id] ??= {
+                categoryId: category.id,
+                connectorIds: defaultConnectorIds(skill),
+              }
             return { selections: next }
           }),
 

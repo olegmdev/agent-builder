@@ -14,6 +14,8 @@ export const skillSchema = z.object({
   id: z.string().min(1),
   title: z.string().min(1),
   availableConnectors: z.array(connectorSchema),
+  /** Connectors switched on when the user checks the skill. A subset of `availableConnectors`. */
+  defaultConnectorIds: z.array(z.string()),
 })
 export type Skill = z.infer<typeof skillSchema>
 

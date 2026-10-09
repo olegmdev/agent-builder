@@ -21,6 +21,9 @@
                 "id": "google_drive",
                 "name": "Google Drive"
               }
+            ],
+            "defaultConnectorIds": [
+              "notion"
             ]
           },
           {
@@ -35,12 +38,35 @@
                 "id": "google_drive",
                 "name": "Google Drive"
               }
+            ],
+            "defaultConnectorIds": [
+              "notion"
             ]
           },
           {
             "id": "contract_risks",
             "title": "Знаходити приховані ризики у складних договорах і готувати листи-відповіді.",
-            "availableConnectors": []
+            "availableConnectors": [
+              {
+                "id": "pdf",
+                "name": "PDF"
+              },
+              {
+                "id": "google_drive",
+                "name": "Google Drive"
+              },
+              {
+                "id": "gmail",
+                "name": "Gmail"
+              },
+              {
+                "id": "outlook",
+                "name": "Outlook"
+              }
+            ],
+            "defaultConnectorIds": [
+              "pdf"
+            ]
           }
         ]
       },
@@ -53,7 +79,19 @@
           {
             "id": "transcript_analysis",
             "title": "Аналізувати транскрипти зустрічей, щоб миттєво знаходити домовленості з колегами.",
-            "availableConnectors": []
+            "availableConnectors": [
+              {
+                "id": "notion",
+                "name": "Notion"
+              },
+              {
+                "id": "google_drive",
+                "name": "Google Drive"
+              }
+            ],
+            "defaultConnectorIds": [
+              "notion"
+            ]
           }
         ]
       }
@@ -72,12 +110,42 @@
           {
             "id": "support_responses",
             "title": "Аналізувати відгуки клієнтів і готувати персоналізовані відповіді на типові звернення.",
-            "availableConnectors": []
+            "availableConnectors": [
+              {
+                "id": "firecrawl",
+                "name": "Firecrawl"
+              },
+              {
+                "id": "notion",
+                "name": "Notion"
+              },
+              {
+                "id": "google_drive",
+                "name": "Google Drive"
+              }
+            ],
+            "defaultConnectorIds": [
+              "firecrawl",
+              "notion"
+            ]
           },
           {
             "id": "crm_updates",
             "title": "Витягувати контакти з листів чи документів і автоматично оновлювати записи в CRM.",
-            "availableConnectors": []
+            "availableConnectors": [
+              {
+                "id": "gmail",
+                "name": "Gmail"
+              },
+              {
+                "id": "notion",
+                "name": "Notion"
+              }
+            ],
+            "defaultConnectorIds": [
+              "gmail",
+              "notion"
+            ]
           }
         ]
       },
@@ -90,17 +158,59 @@
           {
             "id": "seo_content",
             "title": "Писати SEO-оптимізовані статті, дописи для соцмереж або розсилки за вашими запитами.",
-            "availableConnectors": []
+            "availableConnectors": [
+              {
+                "id": "firecrawl",
+                "name": "Firecrawl"
+              },
+              {
+                "id": "notion",
+                "name": "Notion"
+              },
+              {
+                "id": "google_drive",
+                "name": "Google Drive"
+              }
+            ],
+            "defaultConnectorIds": [
+              "firecrawl",
+              "notion"
+            ]
           },
           {
             "id": "creative_copy",
             "title": "Генерувати креативні ідеї, слогани чи рекламні тексти у стилі вашого бренду.",
-            "availableConnectors": []
+            "availableConnectors": [
+              {
+                "id": "notion",
+                "name": "Notion"
+              },
+              {
+                "id": "google_drive",
+                "name": "Google Drive"
+              }
+            ],
+            "defaultConnectorIds": [
+              "notion"
+            ]
           },
           {
             "id": "tender_monitoring",
             "title": "Відстежувати нові комерційні чи державні тендери, що відповідають вашим вимогам.",
-            "availableConnectors": []
+            "availableConnectors": [
+              {
+                "id": "firecrawl",
+                "name": "Firecrawl"
+              },
+              {
+                "id": "notion",
+                "name": "Notion"
+              }
+            ],
+            "defaultConnectorIds": [
+              "firecrawl",
+              "notion"
+            ]
           }
         ]
       }
@@ -119,12 +229,41 @@
           {
             "id": "data_consolidation",
             "title": "Зводити багаторічні дані з різних джерел в одну стандартизовану таблицю з кольоровим кодуванням.",
-            "availableConnectors": []
+            "availableConnectors": [
+              {
+                "id": "notion",
+                "name": "Notion"
+              },
+              {
+                "id": "google_sheets",
+                "name": "Google Drive (Таблиці)"
+              }
+            ],
+            "defaultConnectorIds": [
+              "notion"
+            ]
           },
           {
             "id": "usage_trends",
             "title": "Аналізувати метрики використання продукту й виявляти точки відтоку та тренди.",
-            "availableConnectors": []
+            "availableConnectors": [
+              {
+                "id": "firecrawl",
+                "name": "Firecrawl"
+              },
+              {
+                "id": "notion",
+                "name": "Notion"
+              },
+              {
+                "id": "google_drive",
+                "name": "Google Drive"
+              }
+            ],
+            "defaultConnectorIds": [
+              "firecrawl",
+              "notion"
+            ]
           }
         ]
       }
@@ -143,12 +282,41 @@
           {
             "id": "resume_screening",
             "title": "Переглядати резюме, виділяти ключові навички та відбирати кандидатів під вашу вакансію.",
-            "availableConnectors": []
+            "availableConnectors": [
+              {
+                "id": "gmail",
+                "name": "Gmail"
+              },
+              {
+                "id": "notion",
+                "name": "Notion"
+              },
+              {
+                "id": "google_drive",
+                "name": "Google Drive"
+              }
+            ],
+            "defaultConnectorIds": [
+              "gmail",
+              "notion"
+            ]
           },
           {
             "id": "onboarding_materials",
             "title": "Створювати плани онбордингу та навчальні матеріали для нових працівників на основі внутрішніх вікі.",
-            "availableConnectors": []
+            "availableConnectors": [
+              {
+                "id": "notion",
+                "name": "Notion"
+              },
+              {
+                "id": "google_drive",
+                "name": "Google Drive"
+              }
+            ],
+            "defaultConnectorIds": [
+              "notion"
+            ]
           }
         ]
       }
