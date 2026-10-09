@@ -9,11 +9,11 @@ export default function Landing() {
   const { t } = useTranslation()
   return (
     /*
-     * On desktop the hero grows to its full height first; spare height then goes to the spacer
-     * below it, so on tall viewports it stays near the header instead of sinking below centre.
-     * Without spare height the spacer is 0 and the hero shrinks.
+     * On desktop the hero grows to its full height first; spare height then goes 1:2 to the
+     * spacers around it, so on tall viewports it rides above centre (it already sits below the
+     * header) instead of sinking. Without spare height the spacers are 0 and the hero shrinks.
      */
-    <main className="mx-auto flex w-full max-w-page flex-1 flex-col pb-12 lg:after:grow lg:after:content-['']">
+    <main className="mx-auto flex w-full max-w-page flex-1 flex-col pb-12 lg:before:grow lg:before:content-[''] lg:after:grow-2 lg:after:content-['']">
       <div className="grid grid-cols-1 gap-10 lg:max-h-140 lg:flex-[1000_1_0%] lg:grid-cols-[580fr_548fr] lg:items-center lg:gap-12">
         <section className="flex flex-col items-start justify-center">
           <p className="flex items-center gap-2.5 bg-brand-tint px-4 py-3 text-sm text-brand sm:text-base">
