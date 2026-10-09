@@ -27,7 +27,14 @@
     "titleRest": " for your business, for personal use, or both.",
     "subtitle": "Answer a few questions, and we'll show you which tasks can be handed over to AI and what your agent could look like.",
     "getEstimate": "Let's build",
-    "quickRequest": "Contact us right now"
+    "quickRequest": "Contact us right now",
+    "heroBadges": {
+      "tailored": "Tailored to you",
+      "business": "Business",
+      "skills": "25+ skills",
+      "personal": "Personal",
+      "allInOne": "All-in-One"
+    }
   },
   "goal": {
     "title": "How do you plan to use your AI agent?",

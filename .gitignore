@@ -27,3 +27,6 @@ dist-ssr
 # Playwright
 test-results
 playwright-report
+
+# Video masters from the designer (2160p); 
+assets-src

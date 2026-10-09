@@ -88,7 +88,7 @@ Wizard steps (1–3) share: **"Step N of 3" + progress bar** at the top of the l
   - Heading: "**Build an AI agent** for your business, for personal use, or both." — the first part is green.
   - Subtitle: "Answer a few questions, and we'll show you which tasks can be handed over to AI and what your agent could look like."
   - Buttons: **Get estimate →** (primary, → `/goal`), **Submit request in 1 click** (outlined, → `/quick`).
-- Right column: illustration placeholder.
+- Right column: looping robot clip (`animation_assets/home`, see §10) with five floating badges over it: "Tailored to you", "Business", "25+ skills", "Personal", "All-in-One" (UI strings `landing.heroBadges.*`, so they follow the language). Hidden on phones.
 
 ### 4.2 Step 1 — Goal (`/goal`)
 
@@ -99,7 +99,7 @@ Wizard steps (1–3) share: **"Step N of 3" + progress bar** at the top of the l
   - All-in-One / Custom — Combine skills from all categories for a tailored solution
 - **All-in-One is pre-selected on first visit**; "Choose skills" is always enabled.
 - Selected card: green border + light green tint.
-- Right panel: preview of the selected goal (large image, title, description).
+- Right panel: preview of the selected goal (looping clip, title, description). Clips are mapped by goal id in `goalVideos.ts`, not served by the API; the goal `image` is the still shown under reduced motion.
 - Footer: primary **Choose skills →** (→ `/skills`). No back button on this step.
 - Goal list comes from `getGoals(lang)`.
 
@@ -134,7 +134,7 @@ Wizard steps (1–3) share: **"Step N of 3" + progress bar** at the top of the l
 
 ### 4.5 Success (`/success`)
 
-- Centered: illustration placeholder, "Thank you!", "We'll contact you as soon as we've calculated the cost of your agent".
+- Centered: looping robot clip (`animation_assets/thx`), "Thank you!", "We'll contact you as soon as we've calculated the cost of your agent".
 - No progress bar, no summary panel, no footer.
 
 ### 4.6 Summary panel (Steps 2 and 3)
@@ -335,7 +335,7 @@ src/
   components/
     ui/                 # shadcn (Base UI) primitives
     layout/             # Header, LanguageSwitcher, HeaderCta
-    common/             # shared across pages (ButtonLink, FormField, AppImage, …)
+    common/             # shared across pages (ButtonLink, FormField, AppImage, LoopVideo, FloatingBadge, …)
   api/
     client.ts
     catalog.ts          # getGoals, getCategories
@@ -374,9 +374,14 @@ e2e/
 - Visual language: flat, square corners, 1–2 px borders, single green accent, light grey panels.
 - Button variants: primary (filled green), secondary (green outline, green text), back (dark outline with ←).
 - Selected states (goal card, skill card): green border + light green background.
-- Illustrations and goal/category icons are placeholders in the mockups; use neutral grey placeholders until real assets exist.
+- Category icons are placeholders in the mockups; use neutral grey placeholders until real assets exist. The robot illustrations are final (see the robot animations below).
 - Desktop (`lg`+) follows the mockups. Below `lg`: single column, decorative illustrations/goal preview hidden, summary panel below the content, wizard footer sticky with an icon-only Back button on phones. The height-based `short:` variant applies at `lg`+ only. Min width 320px.
 - Accessibility: keyboard-operable accordion/checkboxes/chips, visible focus, labels on inputs, `aria-pressed` on chips, `aria-disabled` reasoning on the disabled primary button.
+- Robot animations (Landing, Step 1 preview, Success); details and decisions in [ANIMATIONS_PLAN.md](ANIMATIONS_PLAN.md):
+  - `LoopVideo` renders `<video autoplay loop muted playsinline>` (AV1 source first, H.264 fallback, first-frame WebP poster) on a white block, with the designer's vignette over it: `radial-gradient(circle, rgba(255,255,255,0) 85%, #fff 100%)`, `pointer-events: none`. The clip fills the largest square that fits its frame.
+  - `FloatingBadge`: localized HTML pills above the vignette, sized by padding only (no fixed width). Each levitates with its own `translate` path, duration (1.5–2.5 s) and delay, `ease-in-out`.
+  - Reduced motion: stills instead of clips, badges don't move. Where a clip's frame is hidden (Landing on phones, Step 1 preview below `lg`) the video isn't mounted, so it never downloads.
+  - Media: designer masters live in the gitignored `assets-src/`; `scripts/encode-videos.sh` (ffmpeg + cwebp) writes `public/animation_assets/` — 30 fps, about 2× the display size, audio stripped, near-white lifted to pure white so the clip blends into the page.
 
 ---
 
@@ -429,3 +434,4 @@ Phases 1–4 are implemented.
 - Connectors for most skills (only "Search, documents and knowledge" has them).
 - Goal card vs. preview subtitle: the designs use a different subtitle in the Step 1 preview and the summary (e.g. "A fully customizable agent tailored to your exact needs"). The app uses `description` everywhere, per §4.6. Adding a separate field needs an API change.
 - Final design tokens, icons, illustrations and logo: current tokens in `src/index.css` are approximations from the PNGs until real assets are provided.
+- Badge levitation (Landing): durations in `HERO_BADGES` (`src/routes/heroBadges.ts`) come from Figma (one full cycle each), played 1.5× slower (`SLOWDOWN`) because they felt too fast; the offsets and delays are still drafts, because the Figma export has neither. Replace them once the designer sends the position difference between the /1 and /2 variants and the "After delay" values. The Ukrainian badge copy is a draft too.

@@ -31,7 +31,7 @@ export function SummaryPanel({ goal, catalog, onChangeCategory, disabled }: Summ
           <AppImage
             src={goal.thumbnail}
             className="size-14 shrink-0 sm:size-20"
-            imgClassName="size-auto max-h-full max-w-full"
+            imgClassName="h-16 w-auto max-h-full max-w-full"
           />
           <div className="flex min-w-0 flex-col gap-2">
             <h2 className="text-xl leading-tight text-ink sm:text-[1.75rem]">{goal.title}</h2>

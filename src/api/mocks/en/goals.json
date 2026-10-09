@@ -3,8 +3,8 @@
     "id": "personal",
     "title": "Personal / Productivity",
     "description": "Focus on personal effectiveness, routine, and learning",
-    "image": "goals/personal.jpg",
-    "thumbnail": "goals/personal-small.jpg",
+    "image": "goals/personal.webp",
+    "thumbnail": "goals/personal-small.png",
     "defaultSelectedSkills": [
       {
         "skillId": "market_research",
@@ -25,8 +25,8 @@
     "id": "business",
     "title": "Business / Team",
     "description": "Focus on sales, marketing, support, and teamwork",
-    "image": "goals/business.jpg",
-    "thumbnail": "goals/business-small.jpg",
+    "image": "goals/business.webp",
+    "thumbnail": "goals/business-small.png",
     "defaultSelectedSkills": [
       {
         "skillId": "doc_summaries",
@@ -46,8 +46,8 @@
     "id": "all_in_one",
     "title": "All-in-One / Custom",
     "description": "Combine skills from all categories for a tailored solution",
-    "image": "goals/custom.jpg",
-    "thumbnail": "goals/custom-small.jpg",
+    "image": "goals/allinone.webp",
+    "thumbnail": "goals/allinone-small.png",
     "defaultSelectedSkills": [
       {
         "skillId": "market_research",

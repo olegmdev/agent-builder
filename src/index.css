@@ -30,6 +30,11 @@
   --thumbnail: #f8f8f8;
   --danger: #d93025;
   --border-grey: #dde1e6;
+  /* Floating badges on the landing hero (sampled from "Intro screen - START.png") */
+  --badge-purple: #884bbe;
+  --badge-blue: #027ed1;
+  --badge-orange: #de883c;
+  --badge-dark: #181d25;
 
   /* shadcn semantic tokens, mapped onto the brand tokens above */
   --radius: 0rem;
@@ -71,6 +76,10 @@
   --color-placeholder: var(--placeholder);
   --color-thumbnail: var(--thumbnail);
   --color-danger: var(--danger);
+  --color-badge-purple: var(--badge-purple);
+  --color-badge-blue: var(--badge-blue);
+  --color-badge-orange: var(--badge-orange);
+  --color-badge-dark: var(--badge-dark);
 
   --color-ring: var(--ring);
   --color-input: var(--input);
@@ -100,6 +109,24 @@
 
   /* Desktop layout width; below `lg` the content stacks into one column. */
   --container-page: 73.5rem;
+}
+
+@theme {
+  /*
+   * Badge levitation: drift to (--levitate-x, --levitate-y) and back. Each badge sets its own
+   * offset, duration and delay (see FloatingBadge), so no two move in step.
+   */
+  --animate-levitate: levitate 2s ease-in-out infinite;
+
+  @keyframes levitate {
+    0%,
+    100% {
+      transform: translate(0, 0);
+    }
+    50% {
+      transform: translate(var(--levitate-x, 0px), var(--levitate-y, 0px));
+    }
+  }
 }
 
 @layer base {

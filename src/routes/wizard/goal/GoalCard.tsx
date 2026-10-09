@@ -27,7 +27,7 @@ export function GoalCard({ goal, checked, onSelect }: GoalCardProps) {
       />
       <AppImage
         src={goal.thumbnail}
-        imgClassName="size-auto max-h-full max-w-full"
+        imgClassName="h-16 w-auto max-h-full max-w-full"
         className={cn("size-14 shrink-0 bg-thumbnail p-1 sm:size-20", checked && "bg-background")}
       />
       <span className="flex min-w-0 flex-col gap-1 sm:gap-2">

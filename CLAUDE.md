@@ -67,3 +67,5 @@ Mock fixtures in `src/api/mocks/` are JSON. Keep IDs identical across `en/` and 
 ## Design
 
 Take colors, typography, spacing and icons from the PNG mockups in `docs/design/` (there is no Figma file) and define them as Tailwind theme tokens in `src/index.css`. The visual language is flat, with square corners, 1–2 px borders, a single green accent and light grey panels. Restyle the shadcn defaults (which are rounded and neutral) to match.
+
+Robot animations follow [docs/ANIMATIONS_PLAN.md](docs/ANIMATIONS_PLAN.md). Video masters live in the gitignored `assets-src/animations/`; after the designer sends new ones, run `scripts/encode-videos.sh [name]` (needs `brew install ffmpeg webp`) to regenerate the AV1, H.264 and WebP files in `public/animation_assets/`. Never put masters in `public/`.
