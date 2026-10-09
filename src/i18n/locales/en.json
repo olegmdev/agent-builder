@@ -68,7 +68,7 @@
     "footer": "Here is your agent's configuration. Feel free to make changes."
   },
   "contact": {
-    "title": "Your AI agent's configuration is ready! 🎉",
+    "title": "Your AI agent's almost ready! 🎉",
     "subtitle": "We have gathered the basic requirements. Please provide your contact details, and the Incode Group team will prepare a preliminary cost estimate and an implementation roadmap.",
     "name": "Name",
     "email": "Work email",
