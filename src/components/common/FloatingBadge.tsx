@@ -13,12 +13,13 @@ const floatingBadgeVariants = cva(
         blue: "bg-badge-blue",
         orange: "bg-badge-orange",
       },
-      // Heights from the 548 × 560 Figma hero frame: 32, 34, 40 and 50 px.
+      // Heights from the 548 × 560 Figma hero frame: 32, 34, 40 and 50 px. Phones get 24, 24, 32
+      // and 36 px, so the pills leave the robot room on a stage that narrow.
       size: {
-        sm: "px-3 py-2 text-xs leading-4",
-        md: "px-3.5 py-1.75 text-sm leading-5",
-        lg: "px-4 py-2 text-base leading-6",
-        xl: "px-5 py-2.75 text-xl leading-7",
+        sm: "px-3 py-2 text-xs leading-4 max-sm:px-2.5 max-sm:py-1 max-sm:text-[0.6875rem]",
+        md: "px-3.5 py-1.75 text-sm leading-5 max-sm:px-3 max-sm:py-1 max-sm:text-xs max-sm:leading-4",
+        lg: "px-4 py-2 text-base leading-6 max-sm:px-3 max-sm:py-1.5 max-sm:text-sm max-sm:leading-5",
+        xl: "px-5 py-2.75 text-xl leading-7 max-sm:px-3.5 max-sm:py-1.5 max-sm:text-base max-sm:leading-6",
       },
     },
     defaultVariants: { size: "sm" },

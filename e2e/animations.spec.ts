@@ -7,8 +7,7 @@ const BADGES = {
   uk: ["Під ваші потреби", "Бізнес", "25+ навичок", "Особисте", "Все-в-одному"],
 }
 
-test("landing loops the robot clip under localized floating badges", async ({ page }, info) => {
-  test.skip(info.project.name === "mobile", "the hero illustration is hidden on phones")
+test("landing loops the robot clip under localized floating badges", async ({ page }) => {
   await page.goto("./")
 
   const video = page.locator("main video")
@@ -25,13 +24,6 @@ test("landing loops the robot clip under localized floating badges", async ({ pa
   await page.getByRole("button", { name: "Language" }).click()
   await page.getByRole("menuitemradio", { name: /Українська/ }).click()
   for (const text of BADGES.uk) await expect(page.getByText(text, { exact: true })).toBeVisible()
-})
-
-test("phones get no landing clip, so it never downloads", async ({ page }, info) => {
-  test.skip(info.project.name !== "mobile", "phones only")
-  await page.goto("./")
-  await expect(page.getByRole("heading", { level: 1 })).toBeVisible()
-  await expect(page.locator("video")).toHaveCount(0)
 })
 
 test("goal preview plays the clip of the selected goal", async ({ page }, info) => {

@@ -36,15 +36,15 @@ export default function Landing() {
           </div>
         </section>
         {/*
-         * Takes the height the text column sets (see LoopVideo); hidden on phones. On desktop the
+         * Below the text on phones and tablets: a square as wide as the column on phones, 480 px tall
+         * from md. On desktop it takes the height the text column sets (see LoopVideo) and the
          * frame is at most Figma's 548 × 560 (the hero's max height) and centred against the text
          * column by the grid. The badges start at the stage's top edge but the robot's feet end
          * ~12% above its bottom, so nudge it down 10% to centre what is visible.
          */}
         <LoopVideo
           name="animation_assets/home"
-          media="(width >= 48rem)"
-          className="h-120 max-md:hidden lg:h-full lg:min-h-96 lg:translate-y-[10%]"
+          className="aspect-square md:aspect-auto md:h-120 lg:h-full lg:min-h-96 lg:translate-y-[10%]"
         >
           {HERO_BADGES.map((badge) => (
             <FloatingBadge
